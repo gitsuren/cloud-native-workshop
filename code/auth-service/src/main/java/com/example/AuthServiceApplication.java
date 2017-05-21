@@ -49,6 +49,30 @@ class Account {
 		this.username = u;
 		this.password = p;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 }
 
 interface AccountRepository extends JpaRepository<Account, Long> {
@@ -82,7 +106,7 @@ public class AuthServiceApplication {
 
 		@Override
 		public void run(String... strings) throws Exception {
-			Stream.of("jlong,spring", "dsyer,cloud")
+			Stream.of("jlong,spring", "dsyer,cloud", "suru,suru")
 					.map(x -> x.split(","))
 					.forEach(tpl -> this.accountRepository.save(new Account(tpl[0], tpl[1])));
 		}
